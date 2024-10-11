@@ -13,29 +13,18 @@ const Home = () => {
     }
 
     const renderView = () => {
-        if (context.searchByTitle?.length > 0) {
-            if (context.filteredItems?.length > 0) {
-                return (
-                    context.filteredItems?.map(item => (
-                        <Card
-                            key={item.id}
-                            data={item}
-                        />
-                    ))
-                )
-            } else {
-                return (
-                    <div>We don't have anything :c</div>
-                )
-            }
-        } else {
+        if (context.filteredItems?.length > 0) {
             return (
-                context.items?.map(item => (
+                context.filteredItems?.map(item => (
                     <Card
                         key={item.id}
                         data={item}
                     />
                 ))
+            )
+        } else {
+            return (
+                <div>We don't have anything :c</div>
             )
         }
     }

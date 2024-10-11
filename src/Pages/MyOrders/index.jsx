@@ -6,19 +6,17 @@ import { ShoppingCartContext } from '../../Context';
 
 const MyOrders = () => {
     const context = useContext(ShoppingCartContext)
-    const currentPath = window.location.pathname
-    const index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
-    console.log(index);
-    
+
+
     return (
         <Layout className='bg-red-100'>
-            <div className='flex items-center justify-center  relative w-80'>
+            <div className='flex items-center justify-center  relative w-80 mb-4'>
                 <h1>MyOrders</h1>
             </div>
 
             {
                 context.order.map((order, index) => (
-                    <Link key={index} to={`/my-orders/${order.index}`}>
+                    <Link key={index} to={`/my-orders/${index}`}>
                         <OrdersCards
 
                             totalPrice={order.totalPrice}

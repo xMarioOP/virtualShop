@@ -16,11 +16,16 @@ const ShoppingCartProvider = ({ children }) => {
     const openChekoutSideMenu = () => { setIsChekoutSideMenuOpen(true) }
     const closeChekoutSideMenu = () => { setIsChekoutSideMenuOpen(false) }
 
-    // Product Detail · Show product
+    // Product Deta il · Show product
     const [productToShow, setProductToShow] = useState({})
 
     // Shopping Cart · Add products to cart
     const [cartProducts, setCartProducts] = useState([])
+
+    // Shopping Cart · Order
+    const [order, setOrder] = useState([])
+
+
 
 
     return (
@@ -38,7 +43,9 @@ const ShoppingCartProvider = ({ children }) => {
                 isChekoutSideMenuOpen,
                 setIsChekoutSideMenuOpen,
                 openChekoutSideMenu,
-                closeChekoutSideMenu
+                closeChekoutSideMenu,
+                order,
+                setOrder
             }}
         >
             {children}

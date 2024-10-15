@@ -62,7 +62,7 @@ const ShoppingCartProvider = ({ children }) => {
         }
 
         if (searchType === 'BY_TITLE_AND_CATEGORY') {
-            return filteredItemsByCategory(items, searchByCategory).filter(item => item.tilte.toLowerCase().includes(searchByTitle.toLowerCase()))
+            return filteredItemsByCategory(items, searchByCategory).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
         }
 
         if (!searchType) {
@@ -71,17 +71,21 @@ const ShoppingCartProvider = ({ children }) => {
 
     }
 
-    useEffect(() => {
-        if (searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searchByCategory))
-        if (searchByTitle && !searchByCategory) setFilteredItems(filterBy('BY_TITLE', items, searchByTitle, searchByCategory))
-        if (!searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory))
-        if (!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
-    }, [items, searchByTitle, searchByCategory])
+    const filterConfig = {
+        'BY_TITLE': () => filteredItemsByTitle(items, searchByTitle),
+        'BY_CATEGORY': () => filteredItemsByCategory(items, searchByCategory),
+        'BY_TITLE_AND_CATEGORY': () => filteredItemsByCategory(items, searchByCategory).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+      }
+      
+      const searchType = searchByTitle && searchByCategory ? 'BY_TITLE_AND_CATEGORY' :
+                        searchByTitle ? 'BY_TITLE' :
+                        searchByCategory ? 'BY_CATEGORY' : null;
+      
+      useEffect(() => {
+        setFilteredItems(searchType ? filterConfig[searchType]() : items);
+      }, [items, searchByTitle, searchByCategory]);
+      
 
-    console.log("TITLE",searchByTitle);
-    console.log("CATEGORY",searchByCategory);
-    console.log("FILTER",filteredItems);
-    
 
 
     return (

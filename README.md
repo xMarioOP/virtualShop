@@ -74,7 +74,7 @@ The project supports filtering products by:
 
 ## 🌐 API
 
-The product data is fetched from the Escuela JS API. Explore the API [here](https://api.escuelajs.co/api/v1/products).
+The product data is fetched from the Escuela JS API. Explore the API [here](https://fakeapi.platzi.com/).
 
 ## 🚀 Deployment
 

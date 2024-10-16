@@ -6,6 +6,8 @@ import { totalPrice } from '../../Utils';
 import './styles.css'
 
 
+
+
 const CheckOutSideMenu = () => {
     const context = useContext(ShoppingCartContext)
 
@@ -15,8 +17,13 @@ const CheckOutSideMenu = () => {
     }
 
     const handleChekout = () => {
+        if (context.cartProducts.length === 0) {
+            alert("Please add items to your cart before proceeding to checkout.");
+            return;
+        }
+
         const orderToAdd = {
-            date: '10.10.2024',
+            date: context.formattedDate,
             products: context.cartProducts,
             totalProducts: context.cartProducts.length,
             totalPrice: totalPrice(context.cartProducts)

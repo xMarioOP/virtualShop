@@ -16,7 +16,7 @@ const OrdersCards = (props) => {
         <div className={context.isModeDark ? "flex justify-between items-center mb-3 border border-white text-white p-4 w-80" : "flex justify-between items-center mb-3 border border-black p-4 w-80"}>
             <div className="flex justify-between w-full">
                 <p className="flex flex-col">
-                    <span className="font-light">10.10.2024</span>
+                    <span className="font-light">{context.formattedDate}</span>
                     <span className="font-light">{totalProducts} articles</span>
                 </p>
 

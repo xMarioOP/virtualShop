@@ -38,7 +38,7 @@ const ShoppingCartProvider = ({ children }) => {
     // Mode Dark
     const [isModeDark, setIsModeDark] = useState(() => {
         const savedMode = localStorage.getItem('isModeDark');
-        return savedMode === 'true';  
+        return savedMode === 'true';
     });
 
     useEffect(() => {
@@ -96,7 +96,8 @@ const ShoppingCartProvider = ({ children }) => {
     }, [items, searchByTitle, searchByCategory]);
 
 
-
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0];
 
     return (
         <ShoppingCartContext.Provider
@@ -125,7 +126,8 @@ const ShoppingCartProvider = ({ children }) => {
                 searchByCategory,
                 setSearchByCategory,
                 isModeDark,
-                setIsModeDark
+                setIsModeDark,
+                formattedDate
             }}
         >
             {children}

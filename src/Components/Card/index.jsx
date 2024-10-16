@@ -47,8 +47,6 @@ const Card = (data) => {
         ? data.data.images
         : data.data.category.image
 
-    // console.log(data.data.category.image);
-
 
     return (
         <div

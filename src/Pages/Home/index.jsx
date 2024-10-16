@@ -40,12 +40,18 @@ const Home = () => {
             <input
                 type="text"
                 placeholder="Search a product"
-                className={context.isModeDark ? "rounded-lg border border-black w-full max-w-xl p-4 mb-4 mx-auto box-sh shadow-lg shadow-violet-400/50" : "rounded-lg border border-black w-full max-w-xl p-4 mb-4 mx-auto "}
+                className={context.isModeDark
+                    ? "rounded-lg border border-black w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3 max-w-xl p-4 mb-4 mx-auto box-sh shadow-lg shadow-violet-400/50"
+                    : "rounded-lg border border-black w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3 max-w-xl p-4 mb-4 mx-auto"
+                }
+
                 onChange={handleChange}
             />
 
             <div
-                className={context.isModeDark ? "grid gap-4 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg mx-auto bg-black" : "grid gap-4 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg mx-auto"}
+                className={context.isModeDark
+                    ? "grid justify-items-center gap-4 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg mx-auto bg-black"
+                    : "grid justify-items-center gap-4 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg mx-auto"}
             >
 
                 {renderView()}

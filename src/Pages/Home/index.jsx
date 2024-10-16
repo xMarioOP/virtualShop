@@ -24,25 +24,29 @@ const Home = () => {
             )
         } else {
             return (
-                <div>We don't have anything :c</div>
+                <div className="text-center">
+                    No products available at the moment. Please check back later.
+                </div>
             )
         }
     }
 
     return (
-        <Layout className="bg-red-100">
-            <div className="flex items-center justify-center relative w-80 mb-4">
-                <h1 className="font-medium text-xl">Exclusive Products</h1>
+        <Layout>
+            <div className="flex items-center justify-center relative w-full max-w-xl mx-auto mb-4 bg">
+                <h1 className={context.isModeDark ? "font-medium text-xl mt-2 text-white" : "font-medium text-xl mt-2"}>Exclusive Products</h1>
             </div>
 
             <input
                 type="text"
                 placeholder="Search a product"
-                className="rounded-lg border border-black w-80 p-4 mb-4"
+                className={context.isModeDark ? "rounded-lg border border-black w-full max-w-xl p-4 mb-4 mx-auto box-sh shadow-lg shadow-violet-400/50" : "rounded-lg border border-black w-full max-w-xl p-4 mb-4 mx-auto "}
                 onChange={handleChange}
             />
 
-            <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+            <div
+                className={context.isModeDark ? "grid gap-4 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg mx-auto bg-black" : "grid gap-4 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg mx-auto"}
+            >
 
                 {renderView()}
 

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../Context";
 
 
 
@@ -8,9 +10,10 @@ const OrdersCards = (props) => {
     //     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
     // </svg >
 
+    const context = useContext(ShoppingCartContext)
 
     return (
-        <div className="flex justify-between items-center mb-3 border border-black p-4 w-80">
+        <div className={context.isModeDark ? "flex justify-between items-center mb-3 border border-white text-white p-4 w-80" : "flex justify-between items-center mb-3 border border-black p-4 w-80"}>
             <div className="flex justify-between w-full">
                 <p className="flex flex-col">
                     <span className="font-light">10.10.2024</span>

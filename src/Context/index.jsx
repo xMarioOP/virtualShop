@@ -35,6 +35,16 @@ const ShoppingCartProvider = ({ children }) => {
     // Get Products By Category
     const [searchByCategory, setSearchByCategory] = useState(null)
 
+    // Mode Dark
+    const [isModeDark, setIsModeDark] = useState(() => {
+        const savedMode = localStorage.getItem('isModeDark');
+        return savedMode === 'true';  
+    });
+
+    useEffect(() => {
+        localStorage.setItem('isModeDark', isModeDark);
+    }, [isModeDark]);
+
 
     useEffect(() => {
         fetch('https://api.escuelajs.co/api/v1/products')
@@ -75,16 +85,16 @@ const ShoppingCartProvider = ({ children }) => {
         'BY_TITLE': () => filteredItemsByTitle(items, searchByTitle),
         'BY_CATEGORY': () => filteredItemsByCategory(items, searchByCategory),
         'BY_TITLE_AND_CATEGORY': () => filteredItemsByCategory(items, searchByCategory).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
-      }
-      
-      const searchType = searchByTitle && searchByCategory ? 'BY_TITLE_AND_CATEGORY' :
-                        searchByTitle ? 'BY_TITLE' :
-                        searchByCategory ? 'BY_CATEGORY' : null;
-      
-      useEffect(() => {
+    }
+
+    const searchType = searchByTitle && searchByCategory ? 'BY_TITLE_AND_CATEGORY' :
+        searchByTitle ? 'BY_TITLE' :
+            searchByCategory ? 'BY_CATEGORY' : null;
+
+    useEffect(() => {
         setFilteredItems(searchType ? filterConfig[searchType]() : items);
-      }, [items, searchByTitle, searchByCategory]);
-      
+    }, [items, searchByTitle, searchByCategory]);
+
 
 
 
@@ -113,7 +123,9 @@ const ShoppingCartProvider = ({ children }) => {
                 filteredItems,
                 setFilteredItems,
                 searchByCategory,
-                setSearchByCategory
+                setSearchByCategory,
+                isModeDark,
+                setIsModeDark
             }}
         >
             {children}

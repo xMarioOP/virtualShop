@@ -33,7 +33,7 @@ const Card = (data) => {
                 </div>
                 :
                 <div
-                    className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
+                    className='absolute top-0 right-0 flex justify-center items-center bg-white text-black w-6 h-6 rounded-full m-2 p-1'
                     onClick={(e) => addProductsToCart(e, data.data)}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
                         className="size-6">
@@ -47,12 +47,12 @@ const Card = (data) => {
         ? data.data.images
         : data.data.category.image
 
-    console.log(data.data.category.image);
+    // console.log(data.data.category.image);
 
 
     return (
         <div
-            className='bg-white cursor-pointer w-56 h-60 rounded-lg'
+            className={context.isModeDark ? 'bg-black text-white cursor-pointer w-56 h-60 rounded-lg font-semibold p-2' : 'bg-violet-200 cursor-pointer w-56 h-60 rounded-lg font-semibold p-2'}
             onClick={() => productShow(data.data)}
         >
             <figure className='relative mb-2 w-full h-4/5'>
@@ -62,9 +62,9 @@ const Card = (data) => {
                 {renderIcon(data.data.id)}
 
             </figure>
-            <p className='flex justify-between '>
+            <p className='flex justify-between items-center'>
                 <span className='text-sm font-light'>{data.data.title}</span>
-                <span className='text-lg font-medium'>${data.data.price}</span>
+                <span className='text-md font-medium'>${data.data.price}</span>
             </p>
         </div>
     );

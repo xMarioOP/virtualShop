@@ -10,13 +10,13 @@ const MyOrders = () => {
 
     return (
         <Layout className='bg-red-100'>
-            <div className='flex items-center justify-center  relative w-80 mb-4'>
+            <div className={context.isModeDark ? 'mt-2 flex items-center justify-center  relative w-80 mb-4 text-white' : 'mt-2 flex items-center justify-center  relative w-80 mb-4'}>
                 <h1>MyOrders</h1>
             </div>
 
             {
                 context.order.map((order, index) => (
-                    <Link key={index} to={`/my-orders/${index}`}>
+                    <Link key={index} to={`/my-orders/${index}`} className={context.isModeDark ? 'text-white' : 'text-black'}>
                         <OrdersCards
 
                             totalPrice={order.totalPrice}

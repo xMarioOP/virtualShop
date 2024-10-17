@@ -19,13 +19,6 @@ const NavBar = () => {
         : " flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-normal top-0 bg-violet-200 box-sh shadow-lg shadow-violet-400/50"
 
 
-    // let othersCategory;
-    // if (!"clothes" && !"electronics" && !"furniture" && !"toys") {
-    //     othersCategory =  "shoes" || "miscellaneous"
-    // }
-    // console.log(othersCategory);
-    
-
     return (
         <nav
             className={styles}>

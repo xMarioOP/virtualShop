@@ -41,7 +41,9 @@ const ShoppingCartProvider = ({ children }) => {
         return savedMode === 'true';
     });
 
+
     useEffect(() => {
+        document.body.style.backgroundColor = isModeDark ? "black" : "#f5f3ff";
         localStorage.setItem('isModeDark', isModeDark);
     }, [isModeDark]);
 
